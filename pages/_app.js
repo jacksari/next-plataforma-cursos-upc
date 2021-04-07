@@ -1,3 +1,5 @@
+
+import 'swiper/swiper.min.css';
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
