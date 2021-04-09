@@ -7,7 +7,7 @@ import Categories from "../../components/Categories";
 function Index(props) {
     return (
         <Layout path="cursos">
-            <HeaderBreadcrumb title="Cursos" description="Lorem ipsum dolor sit amet, consectetur adipiscing eliras scele!"/>
+            <HeaderBreadcrumb title="Cursos" description="Listado de cursos en las diversas categorías que podrás llevar en la plataforma."/>
             <Courses/>
             <Categories/>
         </Layout>

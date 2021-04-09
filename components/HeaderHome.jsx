@@ -1,42 +1,50 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import pageContext from "../context/pages/pageContext";
 
-
+const index = {
+    'z-index': '10'
+}
 
 function HeaderHome() {
+    const { sliders, videoHome } = useContext(pageContext)
+    //console.log(sliders)
 
     return (
         <header id="head">
-            <Swiper
-                spaceBetween={50}
-                slidesPerView={1}
-                onSlideChange={() => console.log('slide change')}
-                onSwiper={(swiper) => {}}
-                autoplay={true}
-                loop={true}
-            >
-                <SwiperSlide>
-                    <img src="/img/slides/img1.jpg" alt=""/>
-                    <div className="container-slider">
-                        <h1>Start Online Education</h1>
-                        <p>Free Online education template for elearning and online education institute.</p>
+            {
+                videoHome ? (
+                    <div className="swiper-container-index">
+                        <img src="/img/slides/img1.jpg" alt=""/>
                     </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="/img/slides/img2.jpg" alt=""/>
-                    <div className="container-slider">
-                        <h1>Start Online Education</h1>
-                        <p>Free Online education template for elearning and online education institute.</p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="/img/slides/img3.jpg" alt=""/>
-                    <div className="container-slider">
-                        <h1>Start Online Education</h1>
-                        <p>Free Online education template for elearning and online education institute.</p>
-                    </div>
-                </SwiperSlide>
-            </Swiper>
+                ) : (
+                    <Swiper
+                        spaceBetween={50}
+                        slidesPerView={1}
+                        onSlideChange={() => console.log('slide change')}
+                        onSwiper={(swiper) => {}}
+                        autoplay={true}
+                        loop={true}
+                    >
+                        {
+                            sliders.map((slider, index) => {
+                                const { titulo, subitulo, imagen } = slider;
+                                const img = `${process.env.backendURL}${imagen.url}`;
+                                return (
+                                    <SwiperSlide key={index} >
+                                        <img src={img} alt=""/>
+                                        <div className="container-slider">
+                                            <h1>{ titulo }</h1>
+                                            <p>{ subitulo }</p>
+                                        </div>
+                                    </SwiperSlide>
+                                )
+                            })
+                        }
+                    </Swiper>
+                )
+            }
+
         </header>
     );
 }

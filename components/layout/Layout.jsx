@@ -1,9 +1,38 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import Head from "next/head";
 import Header from "./Header";
 import Footer from "./Footer";
+import authContext from "../../context/auth/authContext";
+import pageContext from "../../context/pages/pageContext";
 
 function Layout({children, path}) {
+    const { usuarioAutenticado, autenticado, token, usuario } = useContext(authContext)
+    const { getHome, getCourses, getNosotros, getTeam, getCategories, getPremium, getPageContacto } = useContext(pageContext)
+    useEffect(() => {
+        if(!autenticado && token){
+            //console.log('foto')
+            usuarioAutenticado()
+            getHome()
+            getCourses()
+            getNosotros()
+            getTeam()
+            getCategories()
+            getPremium()
+            getPageContacto()
+        }
+        if(!autenticado && !usuario && !token){
+            //console.log('foto1')
+            getHome()
+            getCourses()
+            getNosotros()
+            getTeam()
+            getCategories()
+            getPremium()
+            getPageContacto()
+        }
+
+    }, []);
+
     return (
         <>
             <Head

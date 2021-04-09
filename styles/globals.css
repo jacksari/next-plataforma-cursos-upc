@@ -66,7 +66,6 @@ Slider
 */
 
 .swiper-slide{
-  background: red;
   height: 600px;
 }
 .swiper-slide img{
@@ -137,7 +136,16 @@ Slider
 }
 
 .swiper-container {
-  z-index: -10;
+
+}
+.swiper-container-index{
+  height: 600px;
+  background: rgba(255, 255, 255, 0.75);
+}
+.swiper-container-index img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .html5-video-player:not(.ytp-transparent), .html5-video-player.unstarted-mode, .html5-video-player.ad-showing, .html5-video-player.ended-mode, .html5-video-player.ytp-fullscreen {
@@ -333,11 +341,29 @@ Slider
   margin: 0 0 5px 0;
   font-weight: 500;
 }
-.overview .grid-video .sections-preguntas .create-pregunta-item input,
+.overview .grid-video .sections-preguntas .create-pregunta-item input{
+  border-radius: 5px;
+  border: 1px solid #d6b1e2;
+  margin-bottom: 5px;
+  min-width: 300px;
+  max-width: 340px;
+  padding: 5px;
+}
+.overview .grid-video .sections-preguntas .create-pregunta-item input:focus{
+  outline: none;
+}
 .overview .grid-video .sections-preguntas .create-pregunta-item textarea{
   border-radius: 5px;
   border: 1px solid #d6b1e2;
   margin-bottom: 5px;
+  min-width: 300px;
+  max-width: 340px;
+  min-height: 80px;
+  max-height: 100px;
+  padding: 5px;
+}
+.overview .grid-video .sections-preguntas .create-pregunta-item textarea:focus{
+  outline: none;
 }
 .overview .grid-video .sections-preguntas .pregunta-item{
   margin-bottom: 20px;
@@ -359,9 +385,276 @@ Slider
 }
 .overview .grid-video .sections-preguntas .pregunta-item .pregunta{
   margin: 0;
-  font-size: 18px;
+  font-size: 16px;
 }
 .overview .grid-video .sections-preguntas .pregunta-item span{
   font-size: 13px;
   color: #808080;
+}
+
+.container-auth{
+  margin: 50px auto;
+  max-width: 400px;
+  text-align: center;
+  border: 1px solid #e6d0ee;
+  border-radius: 10px;
+  padding-bottom: 20px;
+}
+.container-auth h1{
+
+}
+.container-auth form{
+  margin: 20px;
+}
+@media screen and (min-width: 500px) {
+  .container-auth form{
+    margin: 50px;
+  }
+}
+.container-auth form .form-group{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.container-auth form .form-group label{
+  font-size: 16px;
+}
+.container-auth form .form-group input{
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px 8px;
+  border: none;
+  background: #e6d0ee;
+  color: #221427;
+  font-size: 15px;
+  letter-spacing: .5rem;
+}
+.container-auth form .form-group input:focus{
+  outline: none;
+}
+.container-auth .register{
+  display: flex;
+  justify-content: space-around;
+}
+.container-auth .register a{
+  font-weight: 500;
+  color: #2a6496;
+  cursor: pointer;
+}
+.container-auth .register a:focus,
+.container-auth .register a:hover{
+  text-decoration: none;
+}
+
+.error-input{
+  margin: 0;
+  color: red;
+}
+
+.auth-header{
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  position: relative;
+  margin-left: 5px;
+}
+.auth-header img{
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.auth-header p{
+  margin: 0;
+  cursor: pointer;
+}
+
+.auth-header .caja-auth{
+  position: absolute;
+  bottom: -100px;
+  padding: 5px;
+  background: #fff;
+  width: 120px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border: 1px solid #8a4f9e;
+  border-radius: 10px;
+  z-index: 100;
+}
+.auth-header .caja-auth a{
+  margin: 5px 0;
+}
+.auth-header .caja-auth button{
+  border: none;
+  color: red;
+  cursor: pointer;
+  z-index: 100;
+  margin: 5px 0;
+  width: 100%;
+}
+.ReactModal__Overlay .ReactModal__Overlay--after-open{
+  position: fixed;
+  inset: 0px;
+  background-color: rgba(255, 255, 255, 0.75);
+  z-index: 10;
+}
+.box_inner .box .title{
+  font-weight: 600;
+  font-size: 18px;
+}
+.box_categories{
+  display: flex;
+  justify-content: space-between;
+}
+.box_categories p{
+  background: #2a6496;
+  color: #fff;
+  padding: 3px;
+  border-radius: 5px;
+  font-size: 13px;
+}
+.flat {
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.form-mensaje{
+  font-size: 25px;
+  text-align: center;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: #09f;
+
+  animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.teacher{
+  margin-top: 20px;
+  display: flex;
+  margin-left: 20px;
+}
+.teacher img{
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+ .teacher .description .teacher-name{
+  font-size: 25px;
+   margin: 0;
+}
+.teacher .description .title{
+  font-size: 15px;
+  margin: 0;
+  color: #808080;
+}
+.newsBox img {
+  width: 100% !important;
+  height: 190px;
+  object-fit: cover;
+}
+.img-course{
+  width: 100% !important;
+  min-height: 190px;
+  object-fit: cover;
+  display: block;
+}
+.img-responsive, .thumbnail>img, .thumbnail a>img, .carousel-inner>.item>img, .carousel-inner>.item>a>img {
+  display: block;
+  width: 100% \9;
+  max-width: 100%;
+  min-height: 180px;
+}
+.thumbnail .caption {
+  padding: 15px;
+  color: #606577;
+  min-height: 130px;
+}
+.video-default{
+  position: relative;
+  height: 454.14px;
+  margin-bottom: 40px;
+}
+.video-default h1{
+  position: absolute;
+  z-index: 1;
+  top: 50%  ;
+  left: 50%;
+  font-weight: 600;
+  font-size: 40px;
+  color: #fff;
+  transform: translate(-50%,-50%);
+}
+.jacksari{
+  font-weight: 500;
+  padding: 0 0 0 4px !important;
+  text-decoration: none;
+  list-style: none;
+}
+.jacksari:hover{
+  text-decoration: none;
+}
+.boton{
+  outline: none;
+}
+
+.container-problemas{
+  width: 400px;
+  height: 200px;
+  background: #f5ecf8;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 20;
+}
+.container-problemas h3{
+  margin: 0;
+}
+.form-group-problemas {
+  display: flex;
+  flex-direction: column;
+}
+.form-group-problemas textarea{
+  height: 80px;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px 0;
+  max-width: 360px;
+  min-width: 300px;
+  min-height: 80px;
+  max-height: 110px;
+  border: none;
+}
+.form-group-problemas textarea:focus{
+  outline: none;
+}
+.form-problemas button{
+  margin-top: 10px;
+  background: rgba(255, 85, 85, 0.81);
+  color: #fff;
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
 }

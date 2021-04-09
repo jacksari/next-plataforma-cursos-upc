@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styles from '../styles/course.module.css';
 import Modal from 'react-modal';
 import ReactPlayer from 'react-player'
+import pageContext from "../context/pages/pageContext";
 
-function ExperienceItem({type}) {
+function ExperienceItem({type, experiencia}) {
+    //console.log(experiencia)
+    const { link, titulo, valor, video, imgaen } = experiencia
+    const img = `${process.env.backendURL}${imgaen.url}`;
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const { videoHomeFunction } = useContext(pageContext)
     function openModal() {
         setModalIsOpen(true);
     }
@@ -14,6 +19,7 @@ function ExperienceItem({type}) {
     }
     function closeModal(){
         setModalIsOpen(false);
+        videoHomeFunction();
     }
     const clase = `grey-box-icon ${type}`
 
@@ -33,15 +39,15 @@ function ExperienceItem({type}) {
     return (
         <div className="col-md-3 experience-item">
             <div className={clase}>
-                <h4>Online Courses</h4>
-                <div className={styles.imageExperience} onClick={openModal}>
-                    <img  src="/img/news2.jpg" alt=""/>
+                <h4>{titulo}</h4>
+                <div className={styles.imageExperience} onClick={()=>{
+                    openModal();
+                    videoHomeFunction();
+                }}>
+                    <img  src={img} alt=""/>
                 </div>
-                <p className={styles.parrafo}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus eleifend risus ut
-                    congue
-                    eset nec lacus elit dor broma.
-                </p>
-                <p><a href="#"><em>Read More</em></a></p>
+                <p className={styles.parrafo}>{valor}</p>
+                <p><a href={link}><em>Read More</em></a></p>
             </div>
             <Modal
                 ariaHideApp = {false}
@@ -56,7 +62,7 @@ function ExperienceItem({type}) {
                     </button>
                     <div className="player-wrapper">
                         <ReactPlayer
-                            url='https://www.youtube.com/watch?v=sT0jGBa7VQA'
+                            url={video}
                             width='100%'
                             height='100%'
                         />

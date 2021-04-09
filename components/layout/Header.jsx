@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import Link from "next/link";
 import {useRouter} from "next/router";
+import authContext from "../../context/auth/authContext";
 
 function Header({path}) {
+    const { autenticado, usuario, logout } = useContext(authContext)
+    const [toggle, setToggle] = useState(false);
     return (
         <div className="navbar navbar-inverse">
             <div className="container">
@@ -47,11 +50,35 @@ function Header({path}) {
                                 <a >Contactanos</a>
                             </Link>
                         </li>
-                        <li className={path === 'iniciar-sesion' ? 'c6 active': 'c6'}>
-                            <Link href="/iniciar-sesion">
-                                <a href="videos.html">Iniciar Sesión</a>
-                            </Link>
-                        </li>
+                        {
+                            autenticado ? (
+                                <>
+                                    <li className="auth-header">
+                                        <img onClick={()=>setToggle(!toggle)} src={ usuario.image } alt={ usuario.name }/>
+                                        <p onClick={()=>setToggle(!toggle)}>{usuario.name}</p>
+                                        {
+                                            toggle ? (
+                                                <div className="caja-auth">
+                                                    <Link href="/cursos">
+                                                        <a>Cursos</a>
+                                                    </Link>
+                                                    <Link href="/premium">
+                                                        <a>Premium</a>
+                                                    </Link>
+                                                    <button onClick={()=>logout()} type="submit">Cerrar sesión</button>
+                                                </div>
+                                            ) : null
+                                        }
+                                    </li>
+                                </>
+                            ) : (
+                                <li className={path === 'iniciar-sesion' ? 'c6 active': 'c6'}>
+                                    <Link href="/iniciar-sesion">
+                                        <a href="videos.html">Iniciar Sesión</a>
+                                    </Link>
+                                </li>
+                            )
+                        }
 
                     </ul>
                 </div>

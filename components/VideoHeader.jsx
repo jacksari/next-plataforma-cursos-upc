@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Link from "next/link";
+import pageContext from "../context/pages/pageContext";
 
 function VideoHeader() {
+    const { courseSelect } = useContext(pageContext)
     return (
         <div className="header-overiew">
-            <h1>Curso 1</h1>
+            {
+                courseSelect && <h1>{courseSelect.titulo}</h1>
+            }
             <Link href="/cursos">
                 <a className="button">
                     <i className="fas fa-arrow-right"></i>

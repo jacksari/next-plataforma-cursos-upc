@@ -1,19 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import CourseItem from "./CourseItem";
+import pageContext from "../context/pages/pageContext";
 
 function Courses() {
+    const { courses } = useContext(pageContext);
     return (
         <div className="container">
-            <h3>Courses</h3>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua.
-            </p>
+            <h3>Cursos</h3>
+            <p>Listado de cursos en las diversas categorías.</p>
             <br/>
             <ul className="list-unstyled video-list-thumbs row">
-                <CourseItem/>
-                <CourseItem/>
-
+                {
+                    courses.map((course, index) => (
+                        <CourseItem course={course} key={index}/>
+                    ))
+                }
             </ul>
 
         </div>

@@ -1,28 +1,50 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ReactPlayer from "react-player";
+import pageContext from "../context/pages/pageContext";
+import VideoDefault from "./VideoDefault";
 
 function VideoContainer() {
+    const { courseSelect, leccionSelect, teacherSelect } = useContext(pageContext)
+
     return (
         <div className="video-container">
-            <div className="player-wrapper1">
-                <ReactPlayer
-                    className="react-player"
-                    url='https://www.youtube.com/watch?v=sT0jGBa7VQA'
-                    width='100%'
-                    height='100%'
-                />
-            </div>
+            {
+                leccionSelect ? (
+                        <div className="player-wrapper1">
+                            <ReactPlayer
+                                className="react-player"
+                                url={leccionSelect.video}
+                                width='100%'
+                                height='100%'
+                            />
+                        </div>
+                ) : (<VideoDefault/>)
+            }
+
             <div className="footer-video">
-                <div className="teacher">
-                    <img src="/img/photo-1.jpg" alt=""/>
-                    <div className="description">
-                        <p className="teacher-name">
-                            Jack Sari
-                        </p>
-                        <p className="title">Web developer</p>
-                    </div>
-                </div>
-                <p>Leccion 1</p>
+                {
+                    courseSelect && (
+                        <div className="teacher">
+                            {
+                                teacherSelect && <img src={teacherSelect.image} alt=""/>
+                            }
+
+                            <div className="description">
+                                {
+                                    teacherSelect && <p className="teacher-name">{teacherSelect.name}</p>
+                                }
+                                {
+                                    courseSelect.profesor && <p className="title">{courseSelect.profesor.Titulo}</p>
+                                }
+                            </div>
+                        </div>
+                    )
+                }
+                <p>
+                    {
+                        leccionSelect && leccionSelect.nombre
+                    }
+                </p>
             </div>
 
         </div>

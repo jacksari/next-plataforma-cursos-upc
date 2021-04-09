@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import pageContext from "../../context/pages/pageContext";
+import Link from "next/link";
 
 function Footer() {
+    const { categories, courses, planes, direccionContacto, correoContacto, telefonoContacto } = useContext(pageContext)
     return (
         <footer id="footer">
 
@@ -10,26 +13,17 @@ function Footer() {
                         <div className="col-md-3 col-sm-6">
                             <div className="footerwidget">
                                 <h4>
-                                    Course Categories
+                                    Categorías
                                 </h4>
                                 <div className="menu-course">
                                     <ul className="menu">
-                                        <li><a href="#">
-                                            List of Technology
-                                        </a>
-                                        </li>
-                                        <li><a href="#">
-                                            List of Business
-                                        </a>
-                                        </li>
-                                        <li><a href="#">
-                                            List of Photography
-                                        </a>
-                                        </li>
-                                        <li><a href="#">
-                                            List of Language
-                                        </a>
-                                        </li>
+                                        {
+                                            categories.map((category, index) => (
+                                                <li key={index}>
+                                                    {category.nombre}
+                                                </li>
+                                            ))
+                                        }
                                     </ul>
                                 </div>
                             </div>
@@ -37,25 +31,15 @@ function Footer() {
                         <div className="col-md-3 col-sm-6">
                             <div className="footerwidget">
                                 <h4>
-                                    Products Categories
+                                    Cursos
                                 </h4>
                                 <div className="menu-course">
                                     <ul className="menu">
-                                        <li><a href="#">
-                                            Individual Plans </a>
-                                        </li>
-                                        <li><a href="#">
-                                            Business Plans
-                                        </a>
-                                        </li>
-                                        <li><a href="#">
-                                            Free Trial
-                                        </a>
-                                        </li>
-                                        <li><a href="#">
-                                            Academic
-                                        </a>
-                                        </li>
+                                        {
+                                            courses.map((course, index) => (
+                                                <li key={index}>{ course.titulo }</li>
+                                            ))
+                                        }
                                     </ul>
                                 </div>
                             </div>
@@ -63,39 +47,33 @@ function Footer() {
                         <div className="col-md-3 col-sm-6">
                             <div className="footerwidget">
                                 <h4>
-                                    Browse by Categories
+                                    Planes
                                 </h4>
                                 <div className="menu-course">
                                     <ul className="menu">
-                                        <li><a href="#">
-                                            All Courses
-                                        </a>
-                                        </li>
-                                        <li><a href="#">
-                                            All Instructors
-                                        </a>
-                                        </li>
-                                        <li><a href="#">
-                                            All Members
-                                        </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                All Groups
-                                            </a>
-                                        </li>
+                                        {
+                                            planes.map((plan, index) =>(
+                                                <li key={index}>
+                                                    <Link href="/premium">
+                                                        <a>
+                                                            { plan.title}  -  {plan.moneda}{plan.precio}
+                                                        </a>
+                                                    </Link>
+                                                </li>
+                                            ))
+                                        }
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div className="col-md-3 col-sm-6">
                             <div className="footerwidget">
-                                <h4>Contact</h4>
-                                <p>Lorem reksi this dummy text unde omnis iste natus error sit volupum</p>
+                                <h4>Contacto</h4>
+                                <p>Contactanos para más información de los cursos</p>
                                 <div className="contact-info">
-                                    <i className="fa fa-map-marker"></i> Kerniles 416 - United Kingdom<br/>
-                                    <i className="fa fa-phone"></i>+00 123 156 711 <br/>
-                                    <i className="fa fa-envelope-o"></i> youremail@email.com
+                                    <i className="fa fa-map-marker"></i>  {direccionContacto}<br/>
+                                    <i className="fa fa-phone"></i>  {telefonoContacto}<br/>
+                                    <i className="far fa-envelope"></i>  {correoContacto}
                                 </div>
                             </div>
                         </div>
@@ -107,8 +85,8 @@ function Footer() {
                     </a>
                     <a href="#"><i className="fab fa-facebook"></i></a>
                     <a href="#"><i className="fab fa-dribbble"></i></a>
-                    <a href="#"><i className="fab fa-flickr"></i></a>
-                    <a href="#"><i className="fab fa-github"></i></a>
+                    <a href="#"><i className="fab fa-linkedin"></i></a>
+                    <a href="#"><i className="fab fa-instagram"></i></a>
                 </div>
 
                 <div className="clear"></div>
@@ -120,12 +98,29 @@ function Footer() {
                         <div className="col-md-6 panel">
                             <div className="panel-body">
                                 <p className="simplenav">
-                                    <a href="index.html">Home</a> |
-                                    <a href="about.html">About</a> |
-                                    <a href="courses.html">Courses</a> |
-                                    <a href="price.html">Price</a> |
-                                    <a href="videos.html">Videos</a> |
-                                    <a href="contact.html">Contact</a>
+                                    <Link href="/">
+                                        <a>Inicio</a>
+                                    </Link>
+                                     |
+                                    <Link href="/nosotros">
+                                        <a>Nosotros</a>
+                                    </Link>
+                                    |
+                                    <Link href="/cursos">
+                                        <a>Cursos</a>
+                                    </Link>
+                                    |
+                                    <Link href="/premium">
+                                        <a>Planes</a>
+                                    </Link>
+                                    |
+                                    <Link href="/contacto">
+                                        <a>Contactanos</a>
+                                    </Link>
+                                    |
+                                    <Link href="/iniciar-sesion">
+                                        <a>Iniciar Sesión</a>
+                                    </Link>
                                 </p>
                             </div>
                         </div>
@@ -133,8 +128,7 @@ function Footer() {
                         <div className="col-md-6 panel">
                             <div className="panel-body">
                                 <p className="text-right">
-                                    Copyright &copy; 2019. <a href="https://webthemez.com/tag/free" target="_blank">Free
-                                    Website Templates</a> by WebThemez.com
+                                    Copyright &copy; 2021. ALL RIGHT RESERVED DEVELOPER BY<a className="jacksari" href="https://jacksari.com/" target="_blank">JACKSARI</a>
                                 </p>
                             </div>
                         </div>

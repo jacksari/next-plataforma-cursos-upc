@@ -1,14 +1,20 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import ExperienceItem from "./ExperienceItem";
+import pageContext from "../context/pages/pageContext";
 
 function Experiences() {
+    const { experiencias } = useContext(pageContext)
     return (
         <div className="container p-5">
             <div className="row">
-                <ExperienceItem type="b1"/>
-                <ExperienceItem type="b2"/>
-                <ExperienceItem type="b3"/>
-                <ExperienceItem type="b4"/>
+                {
+                    experiencias.map((experiencia, index) => {
+                        const type = `b${index + 1}`
+                        return (
+                            <ExperienceItem type={type} key={index} experiencia={experiencia}/>
+                        )
+                    })
+                }
             </div>
         </div>
     );

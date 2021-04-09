@@ -1,7 +1,51 @@
-import React, {useState} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
+import TabPreguntas from "./TabPreguntas";
+import pageContext from "../context/pages/pageContext";
+import TabSectionItem from "./TabSectionItem";
+import Link from "next/link";
+import Modal from 'react-modal';
+import ReactPlayer from "react-player";
+import FormProblemas from "./FormProblemas";
 
 function VideoTab() {
+    const { secciones, courseSelect, videoHomeFunction  } = useContext(pageContext)
+    const [doc, setDoc] = useState('https://www.pexels.com/es-es/video/imagenes-de-drones-de-la-cima-de-la-montana-2871916/');
+
     const [tab, setTab] = useState(true);
+    useEffect(() => {
+        if(courseSelect){
+            setDoc(`${courseSelect.documentos}`)
+        }
+    }, [courseSelect]);
+
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    function openModal() {
+        setModalIsOpen(true);
+    }
+    function afterOpenModal() {
+        // references are now sync'd and can be accessed.
+        //subtitle.style.color = '#f00';
+    }
+    function closeModal(){
+        setModalIsOpen(false);
+        videoHomeFunction()
+    }
+
+    const customStyles = {
+        content : {
+            top                   : '50%',
+            left                  : '50%',
+            right                 : 'auto',
+            bottom                : 'auto',
+            padding               : 0,
+            overflow: 'hidden',
+            transform             : 'translate(-50%, -50%)',
+            backgroundColor: 'transparent',
+            border: 'transparent'
+        }
+    };
+
+
     return (
         <div className="tab-sections-preguntas">
             <div className="container-tab">
@@ -19,205 +63,50 @@ function VideoTab() {
                 </button>
             </div>
 
+
+
             <div className={tab ? 'tab-container active sections-container' : 'tab-container sections-container'}>
                 <div className="files-container">
-                    <a className="boton" href="">Archivos</a>
-                    <button className="boton">Reportar problema</button>
+                    {
+                        courseSelect ? (
+                            <>
+                                <Link href={doc}>
+                                    <a target="_blank" className="boton">Archivos</a>
+                                </Link>
+                                <button onClick={()=>{
+                                    openModal()
+                                    videoHomeFunction()
+
+                                }} className="boton">Reportar problema</button>
+                            </>
+                        ) : null
+                    }
+
                 </div>
                 <div className="section-container">
-                    <div className="section-item">
-                        <p>
-                            <i className="fas fa-directions"></i>
-                            Section1
-                        </p>
-                        <ul>
-                            <li>
-                                <button>
-                                    <i className="far fa-play-circle"></i>
-                                    {'  '}
-                                    Leccion 1
-                                </button>
-                            </li>
-                            <li>
-                                <button>
-                                    <i className="far fa-play-circle"></i>
-                                    {'  '}
-                                    Leccion 1
-                                </button>
-                            </li>
-                            <li>
-                                <button>
-                                    <i className="far fa-play-circle"></i>
-                                    {'  '}
-                                    Leccion 1
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="section-item">
-                        <p>
-                            <i className="fas fa-directions"></i>
-                            Section1
-                        </p>
-                        <ul>
-                            <li>
-                                <button>
-                                    <i className="far fa-play-circle"></i>
-                                    {'  '}
-                                    Leccion 1
-                                </button>
-                            </li>
-                            <li>
-                                <button>
-                                    <i className="far fa-play-circle"></i>
-                                    {'  '}
-                                    Leccion 1
-                                </button>
-                            </li>
-                            <li>
-                                <button>
-                                    <i className="far fa-play-circle"></i>
-                                    {'  '}
-                                    Leccion 1
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="section-item">
-                        <p>
-                            <i className="fas fa-directions"></i>
-                            Section1
-                        </p>
-                        <ul>
-                            <li>
-                                <button>
-                                    <i className="far fa-play-circle"></i>
-                                    {'  '}
-                                    Leccion 1
-                                </button>
-                            </li>
-                            <li>
-                                <button>
-                                    <i className="far fa-play-circle"></i>
-                                    {'  '}
-                                    Leccion 1
-                                </button>
-                            </li>
-                            <li>
-                                <button>
-                                    <i className="far fa-play-circle"></i>
-                                    {'  '}
-                                    Leccion 1
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="section-item">
-                        <p>
-                            <i className="fas fa-directions"></i>
-                            Section1
-                        </p>
-                        <ul>
-                            <li>
-                                <button>
-                                    <i className="far fa-play-circle"></i>
-                                    {'  '}
-                                    Leccion 1
-                                </button>
-                            </li>
-                            <li>
-                                <button>
-                                    <i className="far fa-play-circle"></i>
-                                    {'  '}
-                                    Leccion 1
-                                </button>
-                            </li>
-                            <li>
-                                <button>
-                                    <i className="far fa-play-circle"></i>
-                                    {'  '}
-                                    Leccion 1
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="section-item">
-                        <p>
-                            <i className="fas fa-directions"></i>
-                            Section1
-                        </p>
-                        <ul>
-                            <li>
-                                <button>
-                                    <i className="far fa-play-circle"></i>
-                                    {'  '}
-                                    Leccion 1
-                                </button>
-                            </li>
-                            <li>
-                                <button>
-                                    <i className="far fa-play-circle"></i>
-                                    {'  '}
-                                    Leccion 1
-                                </button>
-                            </li>
-                            <li>
-                                <button>
-                                    <i className="far fa-play-circle"></i>
-                                    {'  '}
-                                    Leccion 1
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
+                    {
+                        secciones.length > 0 ? (
+                            secciones.map((seccion, index) => (
+                                <TabSectionItem seccion={seccion} key={index}/>
+                            ))
+                        ) : (<div className="spinner"></div>)
+                    }
                 </div>
             </div>
+            <Modal
+                ariaHideApp = {false}
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Example Modal"
+            >
+                <div className="container-modal container-problemas">
+                    <FormProblemas/>
+                </div>
+
+            </Modal>
             <div className={!tab ? 'tab-container sections-preguntas active' : 'tab-container sections-preguntas'}>
-                <div className="create-pregunta-item">
-                    <p>Crear pregunta:</p>
-                    <input type="text" placeholder="Título de pregunta"/>
-                    <textarea rows="5" placeholder="Pregunta"/>
-                </div>
-                <div className="pregunta-item">
-                    <p className="pregunta">¿No sé nada?</p>
-                    <div className="usuario">
-                        <img src="/img/photo-2.jpg" alt=""/>
-                        <p className="nombre">Jack Sari</p>
-                    </div>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam aut consectetur eveniet explicabo fuga.</span>
-                </div>
-                <div className="pregunta-item">
-                    <p className="pregunta">¿No entiendo nada de esto?</p>
-                    <div className="usuario">
-                        <img src="/img/photo-2.jpg" alt=""/>
-                        <p className="nombre">Jack Sari</p>
-                    </div>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam aut consectetur eveniet explicabo fuga.</span>
-                </div>
-                <div className="pregunta-item">
-                    <p className="pregunta">¿No sé nada?</p>
-                    <div className="usuario">
-                        <img src="/img/photo-2.jpg" alt=""/>
-                        <p className="nombre">Jack Sari</p>
-                    </div>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam aut consectetur eveniet explicabo fuga.</span>
-                </div>
-                <div className="pregunta-item">
-                    <p className="pregunta">¿No sé nada?</p>
-                    <div className="usuario">
-                        <img src="/img/photo-2.jpg" alt=""/>
-                        <p className="nombre">Jack Sari</p>
-                    </div>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam aut consectetur eveniet explicabo fuga.</span>
-                </div>
-                <div className="pregunta-item">
-                    <p className="pregunta">¿No sé nada?</p>
-                    <div className="usuario">
-                        <img src="/img/photo-2.jpg" alt=""/>
-                        <p className="nombre">Jack Sari</p>
-                    </div>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam aut consectetur eveniet explicabo fuga.</span>
-                </div>
+                <TabPreguntas/>
             </div>
         </div>
     );

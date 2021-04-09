@@ -1,13 +1,33 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import Layout from "../../components/layout/Layout";
 import HeaderBreadcrumb from "../../components/layout/HeaderBreadcrumb";
 import CourseDetails from "../../components/CourseDetails";
+import pageContext from "../../context/pages/pageContext";
+import {useRouter} from "next/router";
 
 function CursosDetails() {
+    const router = useRouter()
+    const { getCourse, courseSelect } = useContext(pageContext)
+    useEffect(() => {
+        if(router.asPath.slice(8) !== '[i]'){
+            getCourse(router.asPath.slice(8))
+        }
+
+
+    }, [router.asPath.slice(8)]);
+
     return(
         <Layout path="cursos">
-            <HeaderBreadcrumb title="Curso 1" description="Lorem ipsum dolor sit amet, consectetur adipiscing eliras scele!"/>
-            <CourseDetails/>
+            {
+                courseSelect ? (
+                        <>
+                            <HeaderBreadcrumb title={courseSelect.titulo} description={courseSelect.subtitulo}/>
+                            <CourseDetails/>
+                        </>
+                ) : (
+                    <div className="spinner"></div>
+                )
+            }
         </Layout>
     );
 }
