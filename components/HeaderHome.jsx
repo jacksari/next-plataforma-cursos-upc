@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Autoplay } from 'swiper';
 import pageContext from "../context/pages/pageContext";
+SwiperCore.use([Autoplay]);
 
 const index = {
     'z-index': '10'
@@ -23,7 +25,7 @@ function HeaderHome() {
                         slidesPerView={1}
                         onSlideChange={() => console.log('slide change')}
                         onSwiper={(swiper) => {}}
-                        autoplay={true}
+                        autoplay={{ delay: 2000 }}
                         loop={true}
                     >
                         {
