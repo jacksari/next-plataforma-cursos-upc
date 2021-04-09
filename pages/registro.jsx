@@ -72,7 +72,7 @@ function Registro() {
                         <input
                             type="password"
                             placeholder="Contraseña de usuario"
-                            id="email"
+                            id="password"
                             value={formik.values.password}
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
