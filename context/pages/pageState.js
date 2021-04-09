@@ -259,7 +259,7 @@ const PageState = ({children}) => {
     const getTeacher = async (profesor) => {
         //console.log(profesor)
         try {
-            const resp = await axios(`https://api-proyecto-upc.herokuapp.com/users/${profesor.profesor.usuario}`);
+            const resp = await axios(`https://api-proyecto-upc.herokuapp.com/profesores/${profesor.profesor.id}`);
             dispatch({
                 type: GET_TEACHER,
                 payload: resp.data

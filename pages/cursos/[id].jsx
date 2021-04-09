@@ -7,7 +7,7 @@ import {useRouter} from "next/router";
 
 function CursosDetails() {
     const router = useRouter()
-    const { getCourse, courseSelect } = useContext(pageContext)
+    const { getCourse, courseSelect, getTeacher } = useContext(pageContext)
     useEffect(() => {
         if(router.asPath.slice(8) !== '[i]'){
             getCourse(router.asPath.slice(8))
@@ -15,6 +15,12 @@ function CursosDetails() {
 
 
     }, [router.asPath.slice(8)]);
+
+    useEffect(() => {
+        if(courseSelect){
+            getTeacher(courseSelect)
+        }
+    }, [courseSelect]);
 
     return(
         <Layout path="cursos">

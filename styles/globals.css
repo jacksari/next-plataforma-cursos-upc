@@ -553,6 +553,7 @@ Slider
   margin-top: 20px;
   display: flex;
   margin-left: 20px;
+  margin-bottom: 20px;
 }
 .teacher img{
   height: 50px;
@@ -735,4 +736,19 @@ Slider
 }
 .img-responsive, .thumbnail>img, .thumbnail a>img, .carousel-inner>.item>img, .carousel-inner>.item>a>img {
   height: 250px;
+}
+.img-course-details-container{
+  height: 250px;
+  margin-top: 0;
+  margin-bottom: 80px;
+}
+.img-course-details-container img{
+
+  margin-top: 20px;
+  object-fit: cover;
+  width: 100% !important;
+  height: 100%;
+}
+.sidebar .panel {
+  margin-bottom: 0;
 }

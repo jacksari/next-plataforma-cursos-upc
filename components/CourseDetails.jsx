@@ -6,7 +6,7 @@ import ReactMarkdown from "react-markdown";
 import authContext from "../context/auth/authContext";
 
 function CourseDetails() {
-    const { courseSelect } = useContext(pageContext)
+    const { courseSelect, teacherSelect } = useContext(pageContext)
     const { autenticado } = useContext(authContext)
     if(!courseSelect){
         return ;
@@ -31,11 +31,17 @@ function CourseDetails() {
                                         />
                                     </div>
                                     <div className="teacher">
-                                        <img src="/img/photo-1.jpg" alt=""/>
+                                        {
+                                            teacherSelect ? (
+                                                <img src={teacherSelect.usuario.image} alt=""/>
+                                            ) : null
+                                        }
                                         <div className="description">
-                                            <p className="teacher-name">
-                                                Jack
-                                            </p>
+                                            {
+                                                teacherSelect ? (
+                                                    <p className="teacher-name">{teacherSelect.usuario.name}</p>
+                                                ) : null
+                                            }
                                             {
                                                 courseSelect.profesor && <p className="title">{courseSelect.profesor.Titulo}</p>
                                             }
@@ -70,16 +76,11 @@ function CourseDetails() {
                                     </div>
                                     <div className="row panel">
 
-                                        <div className="col-xs-12">
-                                            <h3>Lorem ipsum dolor sit</h3>
-                                            <p>
-                                                {
-                                                    courseSelect.imagen && <img src={`${process.env.backendURL}${courseSelect.imagen.url}`} alt=""/>
-                                                }
-
-                                            </p>
-                                            <p>Morbi vitae diam felis. Mauris vulputate nisi erat, adipiscing pretium lacus lacinia
-                                                quis. Sed consectetur ipsum.</p>
+                                        <div className="col-xs-12 img-course-details-container">
+                                            <h3>Aprende con los mejores</h3>
+                                            {
+                                                courseSelect.imagen && <img src={`${process.env.backendURL}${courseSelect.imagen.url}`} alt=""/>
+                                            }
                                         </div>
                                         <div className="col-xs-12">
                                             <h3>Categorías</h3>
