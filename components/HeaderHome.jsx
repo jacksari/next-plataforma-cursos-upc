@@ -2,11 +2,9 @@ import React, { useContext } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Autoplay } from 'swiper';
 import pageContext from "../context/pages/pageContext";
+import SliderBola from "./SliderBola";
 SwiperCore.use([Autoplay]);
 
-const index = {
-    'z-index': '10'
-}
 
 function HeaderHome() {
     const { sliders, videoHome } = useContext(pageContext)
@@ -21,7 +19,7 @@ function HeaderHome() {
                     </div>
                 ) : (
                     <Swiper
-                        spaceBetween={50}
+                        spaceBetween={0}
                         slidesPerView={1}
                         onSlideChange={() => console.log('slide change')}
                         onSwiper={(swiper) => {}}
@@ -33,9 +31,14 @@ function HeaderHome() {
                                 sliders.map((slider, index) => {
                                     const { titulo, subitulo, imagen } = slider;
                                     const img = `${process.env.backendURL}${imagen.url}`;
+                                    const numSlider = index + 1;
+                                    //console.log(numSlider)
                                     return (
                                         <SwiperSlide key={index} >
                                             <img src={img} alt=""/>
+                                            <div className="num-sliders">
+                                                <SliderBola sliders={sliders} num={numSlider}/>
+                                            </div>
                                             <div className="container-slider">
                                                 <h1>{ titulo }</h1>
                                                 <p>{ subitulo }</p>
