@@ -73,7 +73,7 @@ const PageState = ({children}) => {
             tokenAuth(token)
         }
         try {
-            const resp = await axios.get('http://localhost:1337/home')
+            const resp = await axios.get('https://api-proyecto-upc.herokuapp.com/home')
             dispatch({
                 type: GET_HOME,
                 payload: resp.data
@@ -92,7 +92,7 @@ const PageState = ({children}) => {
 
     const getCourses = async () => {
         try {
-            const resp = await axios.get('http://localhost:1337/cursos')
+            const resp = await axios.get('https://api-proyecto-upc.herokuapp.com/cursos')
             dispatch({
                 type: GET_COURSES,
                 payload: resp.data
@@ -106,7 +106,7 @@ const PageState = ({children}) => {
 
     const getNosotros = async () => {
         try {
-            const resp = await axios.get('http://localhost:1337/nosotros')
+            const resp = await axios.get('https://api-proyecto-upc.herokuapp.com/nosotros')
             dispatch({
                 type: GET_NOSOTROS,
                 payload: resp.data
@@ -119,7 +119,7 @@ const PageState = ({children}) => {
 
     const getTeam = async () => {
         try {
-            const resp = await axios.get('http://localhost:1337/teams')
+            const resp = await axios.get('https://api-proyecto-upc.herokuapp.com/teams')
             dispatch({
                 type: GET_TEAM,
                 payload: resp.data
@@ -133,7 +133,7 @@ const PageState = ({children}) => {
 
     const getCategories = async () => {
         try {
-            const resp = await axios.get('http://localhost:1337/categorias')
+            const resp = await axios.get('https://api-proyecto-upc.herokuapp.com/categorias')
             dispatch({
                 type: GET_CATEGORIES,
                 payload: resp.data
@@ -147,7 +147,7 @@ const PageState = ({children}) => {
 
     const getPremium = async () => {
         try {
-            const resp = await axios.get('http://localhost:1337/premium')
+            const resp = await axios.get('https://api-proyecto-upc.herokuapp.com/premium')
             dispatch({
                 type: GET_PREMIUM,
                 payload: resp.data
@@ -161,7 +161,7 @@ const PageState = ({children}) => {
 
     const getPageContacto = async () => {
         try {
-            const resp = await axios.get('http://localhost:1337/page-contacto')
+            const resp = await axios.get('https://api-proyecto-upc.herokuapp.com/page-contacto')
 
             dispatch({
                 type: GET_CONTACTO_PAGE,
@@ -177,7 +177,7 @@ const PageState = ({children}) => {
     const createContactoMensaje = async (valores) => {
         valores.fecha = new Date();
         try {
-            const resp = await axios.post('http://localhost:1337/contactos', valores);
+            const resp = await axios.post('https://api-proyecto-upc.herokuapp.com/contactos', valores);
             dispatch({
                 type: FORM_CONTACT
             })
@@ -197,7 +197,7 @@ const PageState = ({children}) => {
     const getCourse = async (slug) => {
         //console.log(slug)
         try {
-            const resp = await axios(`http://localhost:1337/cursos/slug/${slug}`);
+            const resp = await axios(`https://api-proyecto-upc.herokuapp.com/cursos/slug/${slug}`);
 
             dispatch({
                 type: GET_COURSE,
@@ -214,7 +214,7 @@ const PageState = ({children}) => {
 
     const getSecciones = async () => {
         try {
-            const resp = await axios(`http://localhost:1337/secciones`);
+            const resp = await axios(`https://api-proyecto-upc.herokuapp.com/secciones`);
             //console.log(resp.data)
             dispatch({
                 type: GET_SECCIONES,
@@ -228,7 +228,7 @@ const PageState = ({children}) => {
 
     const getLecciones = async () => {
         try {
-            const resp = await axios(`http://localhost:1337/lecciones`);
+            const resp = await axios(`https://api-proyecto-upc.herokuapp.com/lecciones`);
             //console.log(resp.data)
             dispatch({
                 type: GET_LECCIOENS,
@@ -259,7 +259,7 @@ const PageState = ({children}) => {
     const getTeacher = async (profesor) => {
         //console.log(profesor)
         try {
-            const resp = await axios(`http://localhost:1337/users/${profesor.profesor.usuario}`);
+            const resp = await axios(`https://api-proyecto-upc.herokuapp.com/users/${profesor.profesor.usuario}`);
             dispatch({
                 type: GET_TEACHER,
                 payload: resp.data
@@ -274,7 +274,7 @@ const PageState = ({children}) => {
 
     const createProblemas = async (valores) => {
         try {
-            const resp = await axios.post(`http://localhost:1337/problemas`, valores);
+            const resp = await axios.post(`https://api-proyecto-upc.herokuapp.com/problemas`, valores);
             console.log(resp.data)
 
 

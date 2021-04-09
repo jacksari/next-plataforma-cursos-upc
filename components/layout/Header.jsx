@@ -17,8 +17,8 @@ function Header({path}) {
                         <span className="icon-bar"></span>
                     </button>
                     <Link href="/">
-                        <a className="navbar-brand">
-                            <img src="/logo.png" alt="Techro HTML5 template"/>
+                        <a className="navbar-brand logo-header">
+                            <img src="/logo.jpeg" alt="Duit Logo"/>
                         </a>
                     </Link>
 
