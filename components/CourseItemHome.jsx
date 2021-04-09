@@ -3,7 +3,6 @@ import Link from "next/link";
 
 function CourseItemHome({course}) {
     const { imagen, titulo, subtitulo, categorias, slug } = course;
-    const img = `${process.env.backendURL}${imagen.url}`;
     const sl = `/cursos/${slug}`
     return (
         <Link href={sl}>
@@ -11,7 +10,11 @@ function CourseItemHome({course}) {
                 <div className="col-lg-4 col-md-4 col-sm-12">
                     <div className="newsBox">
                         <div className="thumbnail">
-                            <figure><img src={img} alt=""/></figure>
+                            <figure>
+                            {
+                                imagen && <img src={imagen.url} alt=""/>
+                            }
+                            </figure>
                             <div className="caption maxheight2">
                                 <div className="box_inner">
                                     <div className="box">

@@ -26,12 +26,12 @@ function VideoContainer() {
                     courseSelect && (
                         <div className="teacher">
                             {
-                                teacherSelect && <img src={teacherSelect.image} alt=""/>
+                                teacherSelect && <img src={teacherSelect.usuario.image} alt=""/>
                             }
 
                             <div className="description">
                                 {
-                                    teacherSelect && <p className="teacher-name">{teacherSelect.name}</p>
+                                    teacherSelect && <p className="teacher-name">{teacherSelect.usuario.name}</p>
                                 }
                                 {
                                     courseSelect.profesor && <p className="title">{courseSelect.profesor.Titulo}</p>

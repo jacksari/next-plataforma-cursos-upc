@@ -7,7 +7,6 @@ import pageContext from "../context/pages/pageContext";
 function ExperienceItem({type, experiencia}) {
     //console.log(experiencia)
     const { link, titulo, valor, video, imgaen } = experiencia
-    const img = `${process.env.backendURL}${imgaen.url}`;
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const { videoHomeFunction } = useContext(pageContext)
     function openModal() {
@@ -44,7 +43,9 @@ function ExperienceItem({type, experiencia}) {
                     openModal();
                     videoHomeFunction();
                 }}>
-                    <img  src={img} alt=""/>
+                    {
+                        imgaen && <img  src={imgaen.url} alt=""/>
+                    }
                 </div>
                 <p className={styles.parrafo}>{valor}</p>
                 <p><a href={link}><em>Read More</em></a></p>

@@ -79,7 +79,7 @@ function CourseDetails() {
                                         <div className="col-xs-12 img-course-details-container">
                                             <h3>Aprende con los mejores</h3>
                                             {
-                                                courseSelect.imagen && <img src={`${process.env.backendURL}${courseSelect.imagen.url}`} alt=""/>
+                                                courseSelect.imagen && <img src={courseSelect.imagen.url} alt=""/>
                                             }
                                         </div>
                                         <div className="col-xs-12">

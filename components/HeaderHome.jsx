@@ -30,12 +30,11 @@ function HeaderHome() {
                             sliders ? (
                                 sliders.map((slider, index) => {
                                     const { titulo, subitulo, imagen } = slider;
-                                    const img = `${process.env.backendURL}${imagen.url}`;
                                     const numSlider = index + 1;
                                     //console.log(numSlider)
                                     return (
                                         <SwiperSlide key={index} >
-                                            <img src={img} alt=""/>
+                                            <img src={imagen.url} alt=""/>
                                             <div className="num-sliders">
                                                 <SliderBola sliders={sliders} num={numSlider}/>
                                             </div>
