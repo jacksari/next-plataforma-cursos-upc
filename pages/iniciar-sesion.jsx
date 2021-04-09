@@ -24,8 +24,8 @@ function IniciarSesion() {
     const { loading, login } = useContext(authContext)
     const formik = useFormik({
         initialValues: {
-            email: 'jack123@gmail.com',
-            password: '123456'
+            email: '',
+            password: ''
         },
         validationSchema: Yup.object({
             email: Yup.string().required('El email es obligatorio'),

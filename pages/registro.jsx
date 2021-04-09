@@ -10,9 +10,9 @@ function Registro() {
     const { register, mensaje, error, loading } = useContext(authContext)
     const formik = useFormik({
         initialValues: {
-            name: 'Jack Sari',
-            email: 'jack123@gmail.com',
-            password: '123456'
+            name: '',
+            email: '',
+            password: ''
         },
         validationSchema: Yup.object({
             name: Yup.string().required('El nombre es obligatorio'),
