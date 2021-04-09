@@ -752,3 +752,11 @@ Slider
 .sidebar .panel {
   margin-bottom: 0;
 }
+.member-img{
+  margin-top: 30px;
+}
+.member-img img {
+  width: 100%;
+  height: 280px;
+  object-fit: contain;
+}
