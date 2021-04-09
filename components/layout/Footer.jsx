@@ -37,7 +37,11 @@ function Footer() {
                                     <ul className="menu">
                                         {
                                             courses.map((course, index) => (
-                                                <li key={index}>{ course.titulo }</li>
+                                                <li key={index}>
+                                                    <Link href={`/cursos/${course.slug}`}>
+                                                        <a>{ course.titulo }</a>
+                                                    </Link>
+                                                </li>
                                             ))
                                         }
                                     </ul>
