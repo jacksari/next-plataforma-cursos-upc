@@ -8,12 +8,12 @@ function AboutContent() {
         <section className="container">
             <div className="row">
                 <section className="col-sm-8 maincontent">
-                    <h3>Sobre Nosotros</h3>
+                    <h3 className="nosotros-h3">Sobre Nosotros</h3>
                     <p>
                         <img src="/img/about.jpg" alt="" className="img-rounded pull-right" width="300"/>
                         {nosotrosNosotros}
                     </p>
-                    <h3>Nuestros Archivos</h3>
+                    <h3 className="nosotros-h3">Nuestros Archivos</h3>
                     {
                         archivosNosotros.map((archivo, index) => (
                             <ArchivosItem archivo={archivo} key={index}/>
@@ -24,7 +24,7 @@ function AboutContent() {
                 <aside className="col-sm-4 sidebar sidebar-right">
 
                     <div className="panel">
-                        <h4>Últimos Cursos</h4>
+                        <h4 className="nosotros-h3">Últimos Cursos</h4>
                         <ul className="list-unstyled list-spaces">
                             {
                                 courses.map((course, index) => {

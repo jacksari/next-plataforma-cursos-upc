@@ -760,3 +760,12 @@ Slider
   height: 280px;
   object-fit: contain;
 }
+.nosotros-h3{
+  margin-bottom: 20px;
+}
+.archivos-main{
+  padding-left: 20px;
+}
+.archivos-item{
+  margin-bottom: 20px;
+}

@@ -10,7 +10,7 @@ function AboutTeam() {
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
-                        <h3>Nuestro Team</h3>
+                        <h3 className="nosotros-h3">Nuestro Team</h3>
                         <p>{teamNosotros}</p>
                         <br/>
                     </div>
