@@ -5,6 +5,7 @@ import Experiences from "../components/Experiences";
 import CoursesHome from "../components/CoursesHome";
 import AboutHome from "../components/AboutHome";
 import pageContext from "../context/pages/pageContext";
+import Testimonios from "../components/Testimonios";
 
 export default function Home() {
     const { courses } = useContext(pageContext)
@@ -14,10 +15,8 @@ export default function Home() {
       <Layout path="">
           <HeaderHome/>
           <Experiences/>
-          {
-              courses ? (<CoursesHome/>) : null
-          }
-
+          <CoursesHome/>
+          <Testimonios/>
           <AboutHome/>
       </Layout>
   )

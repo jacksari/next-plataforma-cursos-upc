@@ -672,3 +672,47 @@ Slider
   position: absolute;
   top: 10px;
 }
+.grey-box-icon {
+  margin-top: 0;
+}
+
+.testimonio-item{
+}
+.testimonio-item .testimonio-item-div{
+  background: #5EC64D;
+  padding: 10px;
+  border-radius: 10px;
+}
+.testimonio-item .f1{
+  background: #0ecfec !important;
+  padding: 10px;
+  border-radius: 10px;
+}
+.testimonio-item  .f2{
+  background: #973CB6 !important;
+  padding: 10px;
+  border-radius: 10px;
+}
+.testimonio-item .f3{
+  background: #d43f3a;
+  padding: 10px;
+  border-radius: 10px;
+}
+.testimonio-item .f4{
+  padding: 10px;
+  border-radius: 10px;
+  background: skyblue;
+}
+
+.testimonio-item h4{
+  color: #fff;
+}
+.testimonio-item .description {
+  color: #fff;
+}
+.testimonio-item .testimonio-item-div .fecha{
+  text-align: right;
+  color: #fff;
+  font-weight: 600;
+
+}

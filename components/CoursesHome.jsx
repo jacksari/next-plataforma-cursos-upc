@@ -8,7 +8,7 @@ function CoursesHome() {
     return (
         <section className="news-box top-margin">
             <div className="container">
-                <h2><span>New Courses</span></h2>
+                <h2><span>Nuevos Cursos</span></h2>
                 <div className="row">
                     {
                         courses.length > 0 ? (

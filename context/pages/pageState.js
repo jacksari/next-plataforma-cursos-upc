@@ -285,6 +285,7 @@ const PageState = ({children}) => {
 
 
 
+
     return (
         <pageContext.Provider
             value={{
@@ -334,7 +335,7 @@ const PageState = ({children}) => {
                 getLeccionesSections,
                 getLeccion,
                 getTeacher,
-                createProblemas
+                createProblemas,
             }}
         >
             {children}

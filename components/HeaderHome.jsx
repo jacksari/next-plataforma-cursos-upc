@@ -27,19 +27,21 @@ function HeaderHome() {
                         loop={true}
                     >
                         {
-                            sliders.map((slider, index) => {
-                                const { titulo, subitulo, imagen } = slider;
-                                const img = `${process.env.backendURL}${imagen.url}`;
-                                return (
-                                    <SwiperSlide key={index} >
-                                        <img src={img} alt=""/>
-                                        <div className="container-slider">
-                                            <h1>{ titulo }</h1>
-                                            <p>{ subitulo }</p>
-                                        </div>
-                                    </SwiperSlide>
-                                )
-                            })
+                            sliders ? (
+                                sliders.map((slider, index) => {
+                                    const { titulo, subitulo, imagen } = slider;
+                                    const img = `${process.env.backendURL}${imagen.url}`;
+                                    return (
+                                        <SwiperSlide key={index} >
+                                            <img src={img} alt=""/>
+                                            <div className="container-slider">
+                                                <h1>{ titulo }</h1>
+                                                <p>{ subitulo }</p>
+                                            </div>
+                                        </SwiperSlide>
+                                    )
+                                })
+                            ) : null
                         }
                     </Swiper>
                 )

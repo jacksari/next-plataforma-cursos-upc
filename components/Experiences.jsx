@@ -6,6 +6,7 @@ function Experiences() {
     const { experiencias } = useContext(pageContext)
     return (
         <div className="container p-5">
+            <h2><span>Experiencias</span></h2>
             <div className="row">
                 {
                     experiencias.map((experiencia, index) => {
